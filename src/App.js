@@ -12,13 +12,13 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
-    console.log('Was clicked!');
+  switchNameHandler = (...args) => {
+    let name = typeof args[0] === 'string' ? args[0] : 'Person';
     this.setState({
       persons: [
-        { name: 'Babi Souza', age: 10, pic: 'http://www.lorempixel.com.br/100/100/1' },
-        { name: 'Davi Luiz', age: 4, pic: 'http://www.lorempixel.com.br/100/100/2' },
-        { name: 'Caio Eduardo', age: 18, pic: 'http://www.lorempixel.com.br/100/100/3' }
+        { name, age: 10, pic: 'http://www.lorempixel.com.br/100/100/1' },
+        { name, age: 4, pic: 'http://www.lorempixel.com.br/100/100/2' },
+        { name, age: 18, pic: 'http://www.lorempixel.com.br/100/100/3' }
       ]
     })
   }
@@ -28,13 +28,13 @@ class App extends Component {
       <div className="App">
         <button onClick={this.switchNameHandler}>Switch name</button>
 
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this, 'Babiiiii')}>
           <img src={this.state.persons[0].pic} alt={this.state.persons[0].name} />
         </Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={() => this.switchNameHandler('Daviiiiii')}>
           My hobbies: toys
         </Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.switchNameHandler}>
           My hobbies: video-games
         </Person>
       </div>
