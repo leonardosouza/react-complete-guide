@@ -10,10 +10,17 @@ class App extends Component {
       { name: 'Davi', age: 3, pic: 'http://www.lorempixel.com.br/100/100/2' },
       { name: 'Caio', age: 17, pic: 'http://www.lorempixel.com.br/100/100/3' }
     ]
-  };
+  }
+
+  switchNameHandler = () => {
+    console.log('Was clicked!');
+  }
 
   render() {
-    return <div className="App">
+    return (
+      <div className="App">
+        <button onClick={this.switchNameHandler}>Switch name</button>
+
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>
           <img src={this.state.persons[0].pic} alt={this.state.persons[0].name} />
         </Person>
@@ -23,7 +30,8 @@ class App extends Component {
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>
           My hobbies: video-games
         </Person>
-      </div>;
+      </div>
+    );
   }
 }
 
