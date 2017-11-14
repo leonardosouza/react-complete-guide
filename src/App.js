@@ -35,9 +35,16 @@ class App extends Component {
   }
 
   render() {
+    let style = {
+      border: '2px solid',
+      background: 'yellow',
+      cursor: 'pointer',
+      marginTop: '20px'
+    }
+
     return (
       <div className="App">
-        <button onClick={this.switchNameHandler}>Switch name</button>
+        <button onClick={this.switchNameHandler} style={style}>Switch name</button>
 
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this, 'Babiiiii')}>
           <img src={this.state.persons[0].pic} alt={this.state.persons[0].name} />
