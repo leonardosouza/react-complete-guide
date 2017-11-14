@@ -23,6 +23,17 @@ class App extends Component {
     })
   }
 
+  nameChangeHandler = (event, ...args) => {
+    let name = typeof args[0] === 'string' ? args[0] : 'Person';
+    this.setState({
+      persons: [
+        { name, age: 10, pic: 'http://www.lorempixel.com.br/100/100/1' },
+        { name, age: 4, pic: 'http://www.lorempixel.com.br/100/100/2' },
+        { name: event.target.value, age: 18, pic: 'http://www.lorempixel.com.br/100/100/3' }
+      ]
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -34,7 +45,7 @@ class App extends Component {
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={() => this.switchNameHandler('Daviiiiii')}>
           My hobbies: toys
         </Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.switchNameHandler}>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.switchNameHandler} change={this.nameChangeHandler}>
           My hobbies: video-games
         </Person>
       </div>
