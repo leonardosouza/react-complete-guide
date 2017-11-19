@@ -44,6 +44,27 @@ class App extends Component {
     this.setState({ persons });
   };
 
+  nameChangeHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => p.id === id);
+
+    // array destructuring assigment for person list:
+    const persons = [...this.state.persons];
+
+    // get current person. You can use Object.assing({}, this.state.persons[personIndex]) or object destructuring assigment:
+    const person = {
+      ...this.state.persons[personIndex],
+    };
+
+    // update the property name
+    person.name = event.target.value;
+
+    // update the list
+    persons[personIndex] = person;
+
+    // set new state
+    this.setState({ persons });
+  };
+
   render() {
     let style = {
       button: {
@@ -65,7 +86,7 @@ class App extends Component {
                 name={person.name}
                 age={person.age}
                 key={person.id}
-                change={() => {}}
+                change={event => this.nameChangeHandler(event, person.id)}
                 click={() => this.deletePersonHandler(index)}
               >
                 <img src={person.pic} alt={person.name} />
