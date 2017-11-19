@@ -69,7 +69,7 @@ class App extends Component {
     let style = {
       button: {
         border: '2px solid',
-        background: 'yellow',
+        background: 'aquamarine',
         cursor: 'pointer',
         marginTop: '20px',
       },
@@ -95,6 +95,8 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.button.background = 'burlywood';
     }
 
     return (
