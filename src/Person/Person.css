@@ -1,0 +1,15 @@
+.Person {
+  border: 1px solid;
+  width: 33%;
+  min-height: 210px;
+  margin: 20px auto;
+  padding: 0 10px 10px;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.purple {
+  color: purple;
+}

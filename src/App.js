@@ -1,6 +1,6 @@
 import Person from './Person/Person';
 import React, { Component } from 'react';
-import css from './App.css';
+import classes from './App.css';
 
 class App extends Component {
   state = {
@@ -66,27 +66,18 @@ class App extends Component {
   };
 
   render() {
-    let style = {
-      button: {
-        border: '2px solid',
-        background: 'aquamarine',
-        cursor: 'pointer',
-        marginTop: '20px',
-        outline: 'none',
-      },
-    };
-
-    let classes = [css.box, css.upper, css.purple];
+    let cssClasses = [];
 
     if(this.state.persons.length > 2) {
-      classes.push(css.greenyellow);
+      cssClasses.push(classes.greenyellow);
     }
 
     if (this.state.persons.length <= 2) {
-      classes.push(css.darkorange);
+      cssClasses.push(classes.darkorange);
     }
 
     let persons = null;
+    let btnClass = null
 
     if (this.state.showPersons) {
       persons = (
@@ -99,7 +90,7 @@ class App extends Component {
                 key={person.id}
                 change={event => this.nameChangeHandler(event, person.id)}
                 click={() => this.deletePersonHandler(index)}
-                classes={classes.join(' ')}
+                cssClasses={cssClasses.join(' ')}
               >
                 <img src={person.pic} alt={person.name} />
               </Person>
@@ -108,12 +99,12 @@ class App extends Component {
         </div>
       );
 
-      style.button.background = 'burlywood';
+      btnClass = classes.Red;
     }
 
     return (
-        <div className={css.App}>
-          <button onClick={this.togglePersonsHandler} style={style.button}>
+        <div className={classes.App}>
+          <button onClick={this.togglePersonsHandler} className={btnClass}>
             Toggle Names
           </button>
           {persons}
