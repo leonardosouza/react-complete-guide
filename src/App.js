@@ -49,24 +49,30 @@ class App extends Component {
       }
     }
 
-    return <div className="App">
-        {/* <button onClick={this.switchNameHandler} style={style}>Switch name</button> */}
-        <button onClick={this.togglePersonsHandler} style={style.button}>
-          Show / Hide Names
-        </button>
+    let persons = null;
 
-        {this.state.showPersons ? <div>
-            <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this, 'Babiiiii')} change={this.nameChangeHandler}>
-              <img src={this.state.persons[0].pic} alt={this.state.persons[0].name} />
-            </Person>
-            <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={() => this.switchNameHandler('Daviiiiii')} change={this.nameChangeHandler}>
-              My hobbies: toys
-            </Person>
-            <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.switchNameHandler} change={this.nameChangeHandler}>
-              My hobbies: video-games
-            </Person>
-          </div> : null}
-      </div>;
+    if(this.state.showPersons) {
+      persons = (
+        <div>
+          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this, 'Babiiiii')} change={this.nameChangeHandler}>
+            <img src={this.state.persons[0].pic} alt={this.state.persons[0].name} />
+          </Person>
+          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={() => this.switchNameHandler('Daviiiiii')} change={this.nameChangeHandler}>
+            My hobbies: toys
+          </Person>
+          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} click={this.switchNameHandler} change={this.nameChangeHandler}>
+            My hobbies: video-games
+          </Person>
+        </div>
+      )
+    }
+
+    return (
+      <div className="App">
+        <button onClick={this.togglePersonsHandler} style={style.button}>Toggle Names</button>
+        {persons}
+      </div>
+    );
   }
 }
 
