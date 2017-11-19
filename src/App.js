@@ -75,6 +75,16 @@ class App extends Component {
       },
     };
 
+    let classes = ['Person', 'upper', 'purple'];
+
+    if(this.state.persons.length > 2) {
+      classes.push('greenyellow');
+    }
+
+    if (this.state.persons.length <= 2) {
+      classes.push('darkorange');
+    }
+
     let persons = null;
 
     if (this.state.showPersons) {
@@ -88,6 +98,7 @@ class App extends Component {
                 key={person.id}
                 change={event => this.nameChangeHandler(event, person.id)}
                 click={() => this.deletePersonHandler(index)}
+                classes={classes.join(' ')}
               >
                 <img src={person.pic} alt={person.name} />
               </Person>
