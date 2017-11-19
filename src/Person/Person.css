@@ -6,6 +6,18 @@
   padding: 0 10px 10px;
 }
 
+@media (min-width: 768px) {
+  .Person {
+    width: 66%;
+  }
+}
+
+@media (min-width: 960px) {
+  .Person {
+    width: 90%;
+  }
+}
+
 .upper {
   text-transform: uppercase;
 }
