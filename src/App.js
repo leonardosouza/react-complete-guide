@@ -1,4 +1,5 @@
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import React, { Component } from 'react';
 import classes from './App.css';
 
@@ -83,18 +84,11 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                name={person.name}
-                age={person.age}
-                key={person.id}
-                change={event => this.nameChangeHandler(event, person.id)}
-                click={() => this.deletePersonHandler(index)}
-                cssClasses={cssClasses.join(' ')}
-              >
-                <img src={person.pic} alt={person.name} />
-              </Person>
-            );
+            return <ErrorBoundary key={person.id}>
+                <Person name={person.name} age={person.age} change={event => this.nameChangeHandler(event, person.id)} click={() => this.deletePersonHandler(index)} cssClasses={cssClasses.join(' ')}>
+                  <img src={person.pic} alt={person.name} />
+                </Person>
+              </ErrorBoundary>;
           })}
         </div>
       );
