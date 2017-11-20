@@ -1,9 +1,9 @@
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './App.css';
 
-class App extends Component {
+class App extends PureComponent {
   constructor(props) {
     super(props);
     console.log('[App.js] Inside constructor()', props);
@@ -17,14 +17,14 @@ class App extends Component {
     console.log('[App.js] Inside componentDidMount()');
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(
-      '[Update App.js] Inside shouldComponentUpdate()',
-      nextProps,
-      nextState
-    );
-    return true;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(
+  //     '[Update App.js] Inside shouldComponentUpdate()',
+  //     nextProps,
+  //     nextState
+  //   );
+  //   return true;
+  // }
 
   componentWillUpdate() {
     console.log('[Update App.js] Inside componentWillUpdate()');
@@ -100,6 +100,8 @@ class App extends Component {
     console.log('[App.js] Inside render()');
     return (
       <div className={classes.App}>
+        <button onClick={() => {this.setState({ showPersons: true })}}>Show All Names</button>
+
         {/* in example below, `props.title` should use `this` why is a stateful component */}
         <Cockpit
           clicked={this.togglePersonsHandler}
