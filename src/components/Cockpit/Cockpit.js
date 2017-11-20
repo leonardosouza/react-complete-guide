@@ -9,7 +9,7 @@ const cockpit = (props) => {
   return <Aux>
       {/* in example below, `props.appTitle` don't use `this` why is a stateless component */}
       <h1>{props.appTitle}</h1>
-      <button onClick={() => props.clicked()} className={btnClass}>
+      <button onClick={() => props.clicked()} className={btnClass.join(' ')}>
         Toggle Names
       </button>
     </Aux>;

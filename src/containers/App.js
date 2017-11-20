@@ -1,3 +1,4 @@
+import WithClass from '../hoc/WithClass';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import React, { PureComponent } from 'react';
@@ -90,7 +91,7 @@ class App extends PureComponent {
   render() {
     console.log('[App.js] Inside render()');
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button onClick={() => {this.setState({ showPersons: true })}}>Show All Names</button>
 
         {/* in example below, `props.title` should use `this` why is a stateful component */}
@@ -108,7 +109,7 @@ class App extends PureComponent {
             classes={classes}
           />
         ) : null}
-      </div>
+      </WithClass>
     );
   }
 }
