@@ -20,7 +20,7 @@ class Person extends Component {
   render() {
     console.warn('[Person.js] Inside render()');
 
-    const { name, age, children, clicked, changed, cssClasses } = this.props;
+    const { name, age, children, clicked, changed } = this.props;
 
     return (
       <Aux>
@@ -37,4 +37,7 @@ class Person extends Component {
   }
 }
 
-export default withClass(Person, classes.Person);
+export default withClass(
+  Person,
+  `${classes.Person} ${classes.Greenyellow}`
+);

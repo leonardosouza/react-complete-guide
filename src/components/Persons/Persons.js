@@ -41,11 +41,6 @@ class Persons extends Component {
   }
 
   render() {
-    let cssClasses = [];
-    cssClasses.push(
-      this.props.persons.length > 2 ? classes.greenyellow : classes.darkorange
-    );
-
     return this.props.persons.map((person, index) => {
       console.log('[Persons.js] Inside render()');
       return (
@@ -55,7 +50,6 @@ class Persons extends Component {
           age={person.age}
           changed={event => this.props.changed(event, person.id)}
           clicked={() => this.props.clicked(index)}
-          cssClasses={cssClasses.join(' ')}
         >
           <img src={person.pic} alt={person.name} />
         </Person>

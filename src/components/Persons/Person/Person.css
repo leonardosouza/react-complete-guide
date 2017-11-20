@@ -6,6 +6,15 @@
   padding: 0 10px 10px;
 }
 
+.Person.Greenyellow {
+  background: greenyellow;
+}
+
+.Person.Darkorange {
+  background: darkorange;
+  color: black;
+}
+
 @media (min-width: 768px) {
   .Person {
     width: 66%;
