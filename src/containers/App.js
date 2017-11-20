@@ -68,7 +68,8 @@ class App extends Component {
 
   render() {
     return <div className={classes.App}>
-        <Cockpit clicked={this.togglePersonsHandler} />
+        {/* in example below, `props.title` should use `this` why is a stateful component */}
+        <Cockpit clicked={this.togglePersonsHandler} appTitle={this.props.title} />
 
         {
           this.state.showPersons ?

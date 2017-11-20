@@ -5,7 +5,8 @@ const cockpit = (props) => {
   let btnClass = classes.Red;
 
   return <div className={classes.Cockpit}>
-      <h1>Hi! I'm React App</h1>
+      {/* in example below, `props.appTitle` don't use `this` why is a stateless component */}
+      <h1>{props.appTitle}</h1>
       <button onClick={() => props.clicked()} className={btnClass}>
         Toggle Names
       </button>
