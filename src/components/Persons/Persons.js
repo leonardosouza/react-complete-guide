@@ -33,11 +33,11 @@ class Persons extends Component {
   }
 
   componentWillUpdate() {
-    console.log('[Persons.js] Inside componentWillUpdate()');
+    console.log('[Update Persons.js] Inside componentWillUpdate()');
   }
 
   componentDidUpdate() {
-    console.log('[Persons.js] Inside componentDidUpdate()');
+    console.log('[Update Persons.js] Inside componentDidUpdate()');
   }
 
   render() {
