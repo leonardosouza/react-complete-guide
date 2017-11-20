@@ -1,16 +1,18 @@
+import Aux from '../../hoc/Aux';
 import React from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
-  let btnClass = classes.Red;
+  const btnClass = [classes.Button];
+  if (props.showPersons) btnClass.push(classes.Red);
 
-  return <div className={classes.Cockpit}>
+  return <Aux>
       {/* in example below, `props.appTitle` don't use `this` why is a stateless component */}
       <h1>{props.appTitle}</h1>
       <button onClick={() => props.clicked()} className={btnClass}>
         Toggle Names
       </button>
-    </div>;
+    </Aux>;
 };
 
 export default cockpit;

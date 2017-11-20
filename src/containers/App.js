@@ -17,15 +17,6 @@ class App extends PureComponent {
     console.log('[App.js] Inside componentDidMount()');
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(
-  //     '[Update App.js] Inside shouldComponentUpdate()',
-  //     nextProps,
-  //     nextState
-  //   );
-  //   return true;
-  // }
-
   componentWillUpdate() {
     console.log('[Update App.js] Inside componentWillUpdate()');
   }
@@ -104,6 +95,7 @@ class App extends PureComponent {
 
         {/* in example below, `props.title` should use `this` why is a stateful component */}
         <Cockpit
+          showPersons={this.state.showPersons}
           clicked={this.togglePersonsHandler}
           appTitle={this.props.title}
         />
