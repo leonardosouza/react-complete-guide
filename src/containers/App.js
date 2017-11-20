@@ -1,5 +1,5 @@
-import Person from '../components/Persons/Person/Person';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 import React, { Component } from 'react';
 import classes from './App.css';
 
@@ -10,25 +10,25 @@ class App extends Component {
         id: 1,
         name: 'Barbara',
         age: 9,
-        pic: 'http://www.lorempixel.com.br/100/100/?1',
+        pic: 'http://placeholder.pics/svg/100x100/DEDEDE/555555/barbara',
       },
       {
         id: 2,
         name: 'Davi',
         age: 3,
-        pic: 'http://www.lorempixel.com.br/100/100/?2',
+        pic: 'http://placeholder.pics/svg/100x100/DEDEDE/555555/davi',
       },
       {
         id: 3,
         name: 'Caio',
         age: 17,
-        pic: 'http://www.lorempixel.com.br/100/100/?3',
+        pic: 'http://placeholder.pics/svg/100x100/DEDEDE/555555/caio',
       },
       {
         id: 4,
         name: 'Luan',
         age: 20,
-        pic: 'http://www.lorempixel.com.br/100/100/?4',
+        pic: 'http://placeholder.pics/svg/100x100/DEDEDE/555555/luan',
       },
     ],
     showPersons: false,
@@ -67,43 +67,18 @@ class App extends Component {
   };
 
   render() {
-    let cssClasses = [];
+    return <div className={classes.App}>
+        <Cockpit clicked={this.togglePersonsHandler} />
 
-    if(this.state.persons.length > 2) {
-      cssClasses.push(classes.greenyellow);
-    }
-
-    if (this.state.persons.length <= 2) {
-      cssClasses.push(classes.darkorange);
-    }
-
-    let persons = null;
-    let btnClass = null
-
-    if (this.state.showPersons) {
-      persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return <ErrorBoundary key={person.id}>
-                <Person name={person.name} age={person.age} change={event => this.nameChangeHandler(event, person.id)} click={() => this.deletePersonHandler(index)} cssClasses={cssClasses.join(' ')}>
-                  <img src={person.pic} alt={person.name} />
-                </Person>
-              </ErrorBoundary>;
-          })}
-        </div>
-      );
-
-      btnClass = classes.Red;
-    }
-
-    return (
-        <div className={classes.App}>
-          <button onClick={this.togglePersonsHandler} className={btnClass}>
-            Toggle Names
-          </button>
-          {persons}
-        </div>
-    );
+        {
+          this.state.showPersons ?
+          <Persons
+            persons={this.state.persons}
+            changed={this.nameChangeHandler}
+            clicked={this.deletePersonHandler}
+            classes={classes} /> : null
+        }
+      </div>;
   }
 }
 
