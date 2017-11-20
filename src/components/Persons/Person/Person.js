@@ -2,10 +2,26 @@ import React, { Component } from 'react';
 import classes from './Person.css';
 
 class Person extends Component {
-  render () {
+  constructor(props) {
+    super(props);
+    console.warn('[Person.js] Inside constructor()', props);
+  }
+
+  componentWillMount() {
+    console.warn('[Person.js] Inside componentWillMount()');
+  }
+
+  componentDidMount() {
+    console.warn('[Person.js] Inside componentDidMount()');
+  }
+
+  render() {
+    console.warn('[Person.js] Inside render()');
+
     const { name, age, children, clicked, changed, cssClasses } = this.props;
 
-    return <div className={`${cssClasses} ${classes.upper} ${classes.Person}`}>
+    return (
+      <div className={`${cssClasses} ${classes.upper} ${classes.Person}`}>
         <p>
           I'm <strong>{name}</strong> and I <strong>{age}</strong> years old!
         </p>
@@ -14,7 +30,8 @@ class Person extends Component {
           <input onChange={changed} value={name} />
         </p>
         <button onClick={clicked}>Remove this item</button>
-      </div>;
+      </div>
+    );
   }
 }
 

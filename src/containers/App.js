@@ -4,6 +4,19 @@ import React, { Component } from 'react';
 import classes from './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] Inside constructor()', props);
+  }
+
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount()');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] Inside componentDidMount()');
+  }
+
   state = {
     persons: [
       {
@@ -67,19 +80,25 @@ class App extends Component {
   };
 
   render() {
-    return <div className={classes.App}>
+    console.log('[App.js] Inside render()');
+    return (
+      <div className={classes.App}>
         {/* in example below, `props.title` should use `this` why is a stateful component */}
-        <Cockpit clicked={this.togglePersonsHandler} appTitle={this.props.title} />
+        <Cockpit
+          clicked={this.togglePersonsHandler}
+          appTitle={this.props.title}
+        />
 
-        {
-          this.state.showPersons ?
+        {this.state.showPersons ? (
           <Persons
             persons={this.state.persons}
             changed={this.nameChangeHandler}
             clicked={this.deletePersonHandler}
-            classes={classes} /> : null
-        }
-      </div>;
+            classes={classes}
+          />
+        ) : null}
+      </div>
+    );
   }
 }
 
