@@ -1,4 +1,5 @@
-import WithClass from '../hoc/WithClass';
+import Aux from '../hoc/Aux';
+import withClass from '../hoc/withClass';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import React, { PureComponent } from 'react';
@@ -91,7 +92,7 @@ class App extends PureComponent {
   render() {
     console.log('[App.js] Inside render()');
     return (
-      <WithClass classes={classes.App}>
+      <Aux>
         <button onClick={() => {this.setState({ showPersons: true })}}>Show All Names</button>
 
         {/* in example below, `props.title` should use `this` why is a stateful component */}
@@ -109,9 +110,9 @@ class App extends PureComponent {
             classes={classes}
           />
         ) : null}
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
